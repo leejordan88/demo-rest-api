@@ -38,8 +38,8 @@ class EventControllerTest {
                 .closeEnrollmentDateTime(LocalDateTime.of(2020, 10, 13, 11, 07, 00))
                 .beginEventDateTime(LocalDateTime.of(2020, 10, 14, 11, 07, 00))
                 .endEventDateTime(LocalDateTime.of(2020, 10, 15, 11, 07, 00))
-                .basePrice(100)
-                .maxPrice(200)
+                .basePrice(0)
+                .maxPrice(0)
                 .limitOfEnrollment(100)
                 .location("강남역 D2 스타텁 팩토리")
                 .build();
@@ -53,7 +53,8 @@ class EventControllerTest {
                 .andExpect(jsonPath("id").exists())
                 .andExpect(header().exists(HttpHeaders.LOCATION))
                 .andExpect(jsonPath("id").value(Matchers.not(100)))
-                .andExpect(jsonPath("free").value(Matchers.not(true)))
+                .andExpect(jsonPath("free").value(true))
+                .andExpect(jsonPath("offline").value(true))
                 .andExpect(jsonPath("eventStatus").value(EventStatus.DRAFT.name()))
                 ;
     }
