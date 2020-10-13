@@ -127,6 +127,7 @@ class EventControllerTest {
                                 fieldWithPath("_links.self.href").description("link to self"),
                                 fieldWithPath("_links.query-events.href").description("link to query-events"),
                                 fieldWithPath("_links.update-event.href").description("link to update-event an existing event")
+//                                fieldWithPath("_links.profile").description("link to profile")
                         )
                 ))
                 ;
