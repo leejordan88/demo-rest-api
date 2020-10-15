@@ -10,6 +10,10 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureRestDocs
@@ -21,7 +25,9 @@ public class IndexControllerTest {
     MockMvc mockMvc;
 
     @Test
-    public void index() {
-
+    public void index() throws Exception {
+        mockMvc.perform(get("/api/"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("_links.events").exists());
     }
 }
