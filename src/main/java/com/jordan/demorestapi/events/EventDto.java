@@ -29,4 +29,8 @@ public class EventDto {
     @Min(0)
     private int limitOfEnrollment;
 
+    private boolean free;
+
+    private EventStatus eventStatus;
+
 }

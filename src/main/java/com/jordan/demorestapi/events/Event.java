@@ -1,5 +1,6 @@
 package com.jordan.demorestapi.events;
 
+import com.jordan.demorestapi.accounts.Account;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,6 +27,8 @@ public class Event {
     private boolean free;
     @Enumerated(EnumType.STRING)
     private EventStatus eventStatus = EventStatus.DRAFT;
+    @ManyToOne
+    private Account manager;
 
     public void update() {
         this.free = (this.basePrice == 0 && this.maxPrice == 0) ? true : false;
